@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>StudentExpenseTracker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+    <link href="{% static  "css/main.css" %}" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar-logo">
+        <div class="container">
+            <h3>
+                StudentExpenseTracker
+            </h3>
+        </div>
+    </nav>
+
+    <div class="container">
+        {% block content %} {% endblock content %}
+    </div>
+    <footer class="footer mt-5">
+        <div class="container text-center">
+            <span class="text-muted">© 2023 StudentExpenseTracker</span>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+
+</html>

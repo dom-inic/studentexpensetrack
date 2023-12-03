@@ -1,0 +1,58 @@
+{% extends 'expense_manager_app/main.html' %}
+{% load static %}
+{% block content %}
+
+<!--Login/Logout Section-->
+<div class="header-bar">
+    <div>
+        <h1>Welcome, {{request.user.first_name}} {{request.user.last_name}}</h1>
+        {% if count == 0 %}
+        <h3>You have no expense available.</h3>
+        {% else %}
+        <h3>You have {{count}} expense{{count|pluralize:"s"}}</h3>
+        {% endif %}
+    </div>
+    <a href="{% url 'expense-list' %}">Go back</a>
+</div>
+
+<!--Search box-->
+<div id="search-add-wrapper">
+    <form method="GET" style="display: flex;">
+        <input style="width: 10%;" type="text" name="search-card" placeholder="Card.." value="{{request.GET.search_card}}">
+        <input style="width: 10%;" type="text" name="search-category" placeholder="Category.." value="{{request.GET.search_category}}">
+        <input style="width: 10%;" type="text" name="search-notes" placeholder="Notes.." value="{{request.GET.search_notes}}">
+        <input style="width: 25%;" type="date" name="search-date" placeholder="Date..." value="{{request.GET.search_date}}">
+        <input style="width: 25%;" type="number" name="search-amount" placeholder="Amount.." value="{{request.GET.search_amount}}">
+        <input style="width: 10%; color: #fff; background-color: #001B79;" class="button" type="submit" value="Search">
+    </form>
+</div>
+
+<!--Expense List section-->
+<div>
+    {% for expense in expenses %}
+    <div class="expense-wrapper" data-position="{{expense.pk}}">
+        <div class="expense-title">
+            <ul>
+                <li>Card name: {{expense.card}}</li>
+                <li>Category: {{expense.category}}</li>
+                <li>Expense Date: {{expense.expense_date}}</li>
+                <li>Amount: €{{expense.amount}}</li>
+                <li>Notes: {{expense.notes}}</li>
+            </ul>
+        </div>
+        <div class="expense-controls">
+            <a style="text-decoration: underline; color: #001B79;" href="{% url 'expense-detail' expense.id %}">View</a>
+            <a style="text-decoration: underline; color: #001B79;" href="{% url 'expense-update' expense.id %}">Update</a>
+            <a class="delete-link" href="{% url 'expense-delete' expense.id %}">&#215;</a>
+        </div>
+
+    </div>
+
+    {% empty %}
+    <div style="text-align: center; padding-bottom: 10px; line-height: 1em;">
+        <h3>There's no expense for now :)</h3>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock content %}
