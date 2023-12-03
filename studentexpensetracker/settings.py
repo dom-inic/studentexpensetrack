@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-1oyf-$(bb**1xd_i5+0^0na4sg2#ye8h+$*8arta$zekcz1+yz
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*', 'http://koala23.pythonanywhere.com']
 
 
 # Application definition
