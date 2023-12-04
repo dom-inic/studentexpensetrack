@@ -1,1 +1,0 @@
-web: gunicorn studentexpensetracker.wsgi
